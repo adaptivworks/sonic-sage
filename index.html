@@ -165,31 +165,62 @@
       .main-header {
         position: relative !important;
         display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        align-items: flex-start !important;
-        justify-content: space-between !important;
-        padding: 21px 16px !important;
-        gap: 0 !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 17px 11px 0 11px !important;
         opacity: 1 !important;
         pointer-events: auto;
       }
 
-      .main-header .header__brand {
-        order: 1 !important;
+      .main-header.player-active {
+        opacity: 1 !important;
       }
 
+      /* Dissolve wrapper so icons + description become direct flex children */
       .main-header .header__right {
-        order: 3 !important;
-        width: 100% !important;
-        margin-top: 16px !important;
+        display: contents !important;
       }
 
+      /* Icons: centered row at top with divider below */
       .main-header .header__icons {
+        order: -1 !important;
+        position: static !important;
+        justify-content: center !important;
+        gap: 7px !important;
+        padding-bottom: 17px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+        margin-bottom: 33px !important;
+      }
+
+      /* Wordmark below icons */
+      .main-header .header__brand {
+        order: 0 !important;
+      }
+
+      .main-header .header__wordmark {
+        font-size: clamp(42px, 12vw, 64px) !important;
+      }
+
+      /* Description: right-aligned, 47% width */
+      .main-header .header__description {
+        order: 1 !important;
+        margin-left: auto !important;
+        width: 47.3% !important;
+        margin-top: 30px !important;
+        font-size: 12px !important;
+        line-height: 15.12px !important;
+        letter-spacing: -0.24px !important;
+        font-weight: 400 !important;
+      }
+
+      /* Bottom divider line */
+      .main-header::after {
+        content: '' !important;
+        display: block !important;
         order: 2 !important;
-        position: absolute !important;
-        right: 16px !important;
-        top: 21px !important;
+        height: 1px !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+        margin-top: 33px !important;
       }
 
       .main-header.player-active {
