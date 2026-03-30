@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('fonts/SuisseIntl-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('fonts/SuisseIntl-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -6,7 +22,7 @@
 
 :root {
   --color-white: #E3E3E3;
-  --font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family: 'SuisseIntl', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 html, body {
