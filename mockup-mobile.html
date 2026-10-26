@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Mockup</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #050505;
+      color: #E3E3E3;
+      font-family: 'Switzer', sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    .header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 17px 16px;
+    }
+
+    .back-btn {
+      width: 28px;
+      height: 28px;
+      opacity: 0.7;
+    }
+
+    .header-icons {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .header-icons .icon-eq {
+      width: 25px;
+      height: auto;
+      opacity: 0.9;
+    }
+
+    .header-icons .icon-globe {
+      width: 25px;
+      height: auto;
+      opacity: 0.9;
+    }
+
+    /* ── Album Info ── */
+    .album-info {
+      padding: 24px 16px 16px;
+    }
+
+    .album-title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: #ffc21d;
+    }
+
+    .album-artist {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(227, 227, 227, 0.5);
+      margin-top: 6px;
+      letter-spacing: -0.3px;
+    }
+
+    .album-year {
+      font-size: 15px;
+      font-weight: 500;
+      color: #E3E3E3;
+      margin-top: 3px;
+      letter-spacing: -0.3px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 16px 16px;
+    }
+
+    /* ── Cover ── */
+    .cover {
+      padding: 0 16px;
+    }
+
+    .cover img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Tracklist ── */
+    .tracklist {
+      padding: 20px 16px 40px;
+      list-style: none;
+    }
+
+    .track {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 3px 0;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -0.24px;
+      line-height: 19px;
+      color: rgba(227, 227, 227, 0.5);
+    }
+
+    .track--active {
+      color: #ffc21d;
+    }
+
+    .track-marker {
+      width: 12px;
+      flex-shrink: 0;
+      visibility: hidden;
+    }
+
+    .track--active .track-marker {
+      visibility: visible;
+      color: #E3E3E3;
+    }
+
+    .track-name {
+      flex: 1;
+    }
+
+    .track-feat {
+      color: rgba(227, 227, 227, 0.35);
+    }
+
+    .track-dur {
+      text-align: right;
+      min-width: 32px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header: back arrow + icons -->
+  <header class="header">
+    <svg class="back-btn" viewBox="0 0 34 30" fill="none">
+      <path d="M20 3L6 15L20 27" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="header-icons">
+      <svg class="icon-eq" viewBox="0 0 17.2245 12.1648" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="0.993118" cy="11.1716" r="0.993118" fill="white"/>
+        <circle cx="0.993118" cy="8.6271" r="0.993118" fill="white"/>
+        <circle cx="0.993118" cy="6.08213" r="0.993118" fill="white"/>
+        <circle cx="3.81656" cy="11.1716" r="0.993118" fill="white"/>
+        <circle cx="3.81656" cy="8.6271" r="0.993118" fill="white"/>
+        <circle cx="3.81656" cy="6.08213" r="0.993118" fill="white"/>
+        <circle cx="3.81656" cy="3.53765" r="0.993118" fill="white"/>
+        <circle cx="3.81656" cy="0.993118" r="0.993118" fill="white"/>
+        <circle cx="6.29937" cy="11.1716" r="0.993118" fill="white"/>
+        <circle cx="6.29937" cy="8.6271" r="0.993118" fill="white"/>
+        <circle cx="8.78218" cy="11.1716" r="0.993118" fill="white"/>
+        <circle cx="8.78218" cy="8.6271" r="0.993118" fill="white"/>
+        <circle cx="8.78218" cy="6.08213" r="0.993118" fill="white"/>
+        <circle cx="8.78218" cy="3.53765" r="0.993118" fill="white"/>
+        <circle cx="11.265" cy="11.1716" r="0.993118" fill="white"/>
+        <circle cx="11.265" cy="8.6271" r="0.993118" fill="white"/>
+        <circle cx="11.265" cy="6.08213" r="0.993118" fill="white"/>
+        <circle cx="13.7478" cy="11.1716" r="0.993118" fill="white"/>
+        <circle cx="13.7478" cy="8.6271" r="0.993118" fill="white"/>
+        <circle cx="13.7478" cy="6.08213" r="0.993118" fill="white"/>
+        <circle cx="13.7478" cy="3.53765" r="0.993118" fill="white"/>
+        <circle cx="16.2314" cy="11.1716" r="0.993118" fill="white"/>
+        <circle cx="16.2314" cy="8.6271" r="0.993118" fill="white"/>
+      </svg>
+      <svg class="icon-globe" viewBox="0 0 84 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M62.7564 18.8441C61.6927 18.8458 60.7199 18.6011 59.8383 18.1099C58.9566 17.6149 58.2593 16.9424 57.7466 16.0922C57.2375 15.2421 56.9822 14.3075 56.9805 13.2885C56.9788 12.2621 57.231 11.323 57.7372 10.4711C58.2471 9.61553 58.9421 8.93879 59.8222 8.4409C60.7022 7.94302 61.6741 7.69319 62.7378 7.69142C63.7941 7.68966 64.7613 7.93626 65.6392 8.43121C66.5172 8.92617 67.2107 9.6006 67.7197 10.4545C68.2287 11.3046 68.4841 12.2429 68.4858 13.2694C68.4875 14.2883 68.2353 15.2237 67.7291 16.0756C67.2229 16.9274 66.5316 17.6023 65.6553 18.1002C64.779 18.5943 63.8127 18.8423 62.7564 18.8441Z" fill="white"/>
+        <path d="M62.8936 0.431641C68.6264 0.431641 73.796 1.82765 77.5176 4.06152C81.2475 6.30052 83.457 9.33384 83.457 12.6025C83.457 15.8712 81.2475 18.9046 77.5176 21.1436C73.796 23.3774 68.6264 24.7725 62.8936 24.7725C57.161 24.7724 51.992 23.3773 48.2705 21.1436C44.5404 18.9046 42.3301 15.8713 42.3301 12.6025C42.3301 9.33375 44.5404 6.30054 48.2705 4.06152C51.992 1.82777 57.1609 0.431654 62.8936 0.431641Z" stroke="white" stroke-width="0.864"/>
+        <path d="M62.7354 0.431641C67.3257 0.431699 71.4649 1.81834 74.4463 4.03809C77.4274 6.25783 79.2295 9.29048 79.2295 12.6025C79.2294 15.9146 77.4275 18.9473 74.4463 21.167C71.4649 23.3867 67.3257 24.7724 62.7354 24.7725C58.145 24.7725 54.0058 23.3868 51.0244 21.167C48.043 18.9472 46.2403 15.9147 46.2402 12.6025C46.2402 9.29034 48.043 6.25786 51.0244 4.03809C54.0058 1.8183 58.1449 0.431641 62.7354 0.431641Z" stroke="white" stroke-width="0.864"/>
+        <circle cx="62.891" cy="12.5697" r="11.8965" stroke="white" stroke-width="0.864"/>
+      </svg>
+    </div>
+  </header>
+
+  <!-- Album info -->
+  <div class="album-info">
+    <h1 class="album-title">A SONIC JOINT</h1>
+    <p class="album-artist">Sonic Sage* ft. 17 Squad</p>
+    <p class="album-year">2024</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Cover -->
+  <div class="cover">
+    <img src="A Sonic Joint - Ft. 17 Squad/A SAGE JOINT EP [2024].jpg" alt="A Sonic Joint">
+  </div>
+
+  <!-- Tracklist -->
+  <ul class="tracklist">
+    <li class="track track--active">
+      <span class="track-marker">+</span>
+      <span class="track-name">INTRO</span>
+      <span class="track-feat">ft. Leo Blanchet</span>
+      <span class="track-dur">2:01</span>
+    </li>
+    <li class="track">
+      <span class="track-marker">+</span>
+      <span class="track-name">FINSBURY PARK</span>
+      <span class="track-feat">ft. Master Vlad</span>
+      <span class="track-dur">2:14</span>
+    </li>
+    <li class="track">
+      <span class="track-marker">+</span>
+      <span class="track-name">CONVINTO</span>
+      <span class="track-feat">ft. Danny Montana</span>
+      <span class="track-dur">2:38</span>
+    </li>
+    <li class="track">
+      <span class="track-marker">+</span>
+      <span class="track-name">CHASING STATUS</span>
+      <span class="track-feat">ft. Durden</span>
+      <span class="track-dur">2:27</span>
+    </li>
+    <li class="track">
+      <span class="track-marker">+</span>
+      <span class="track-name">SCOVATA</span>
+      <span class="track-feat">ft. 'Lil V</span>
+      <span class="track-dur">2:20</span>
+    </li>
+    <li class="track">
+      <span class="track-marker">+</span>
+      <span class="track-name">SULLA VETTA</span>
+      <span class="track-feat">ft. Killa Kendo</span>
+      <span class="track-dur">4:00</span>
+    </li>
+    <li class="track">
+      <span class="track-marker">+</span>
+      <span class="track-name">TRAPDANCE</span>
+      <span class="track-feat">ft. Nik Frost</span>
+      <span class="track-dur">3:40</span>
+    </li>
+    <li class="track">
+      <span class="track-marker">+</span>
+      <span class="track-name">GENTE DA CAPODANNO</span>
+      <span class="track-feat">ft. Nino Jefe</span>
+      <span class="track-dur">4:00</span>
+    </li>
+  </ul>
+
+</body>
+</html>

@@ -62,14 +62,16 @@ const SCRAMBLE_INTERVAL = 94;
 let scrambleTimer = null;
 
 function getTrackEls(albumIdx) {
-  return sections[albumIdx].querySelectorAll('.album-section__track');
+  const section = document.querySelector(`.album-section[data-album="${albumIdx}"]`);
+  return section ? section.querySelectorAll('.album-section__track') : [];
 }
 
 // Only Artificiale (album 1) gets scrambled titles
 const SCRAMBLE_ALBUMS = [1];
 
 function scrambleTick() {
-  sections.forEach((section, albumIdx) => {
+  sections.forEach((section) => {
+    const albumIdx = parseInt(section.dataset.album, 10);
     if (!SCRAMBLE_ALBUMS.includes(albumIdx)) return;
     const trackEls = getTrackEls(albumIdx);
     const tracks = albums[albumIdx].tracks;
@@ -102,7 +104,8 @@ function stopScramble() {
     clearInterval(scrambleTimer);
     scrambleTimer = null;
   }
-  sections.forEach((section, albumIdx) => {
+  sections.forEach((section) => {
+    const albumIdx = parseInt(section.dataset.album, 10);
     const trackEls = getTrackEls(albumIdx);
     const tracks = albums[albumIdx].tracks;
     trackEls.forEach((el, i) => {
@@ -144,7 +147,8 @@ function clearActiveTrack(albumIdx) {
 }
 
 function updateActiveTrack() {
-  sections.forEach((s, idx) => {
+  sections.forEach((s) => {
+    const idx = parseInt(s.dataset.album, 10);
     if (idx !== activeAlbum) clearActiveTrack(idx);
   });
 
@@ -210,7 +214,8 @@ document.querySelectorAll('.album-section__artwork').forEach((artwork) => {
   });
 });
 
-sections.forEach((section, albumIdx) => {
+sections.forEach((section) => {
+  const albumIdx = parseInt(section.dataset.album, 10);
   const trackEls = getTrackEls(albumIdx);
   trackEls.forEach((el) => {
     el.addEventListener('mouseenter', () => {
@@ -246,7 +251,8 @@ lightbox.addEventListener('click', () => {
 });
 
 // ── Click on section (play/pause) ──
-sections.forEach((section, albumIdx) => {
+sections.forEach((section) => {
+  const albumIdx = parseInt(section.dataset.album, 10);
   section.addEventListener('click', (e) => {
     if (e.target.closest('.album-section__track') || e.target.closest('.bar') || e.target.closest('.album-section__artwork')) return;
 
@@ -260,7 +266,8 @@ sections.forEach((section, albumIdx) => {
 });
 
 // ── Click on track ──
-sections.forEach((section, albumIdx) => {
+sections.forEach((section) => {
+  const albumIdx = parseInt(section.dataset.album, 10);
   const trackEls = getTrackEls(albumIdx);
   trackEls.forEach((el) => {
     el.addEventListener('click', (e) => {
@@ -332,7 +339,10 @@ scrollContainer.addEventListener('scroll', () => {
   }
   lastScrollTop = scrollTop;
 
-  const newAlbum = Math.round(scrollTop / viewHeight);
+  const visualIdx = Math.round(scrollTop / viewHeight);
+  const sectionAtPos = sections[visualIdx];
+  if (!sectionAtPos) return;
+  const newAlbum = parseInt(sectionAtPos.dataset.album, 10);
 
   if (newAlbum !== activeAlbum && newAlbum >= 0 && newAlbum < albums.length) {
     if (isPlaying) pause();
@@ -381,18 +391,20 @@ document.addEventListener('keydown', (e) => {
   }
   if (e.code === 'ArrowDown') {
     e.preventDefault();
-    if (activeAlbum < albums.length - 1) {
+    const curVisual = Array.from(sections).findIndex(s => parseInt(s.dataset.album, 10) === activeAlbum);
+    if (curVisual < sections.length - 1) {
       scrollContainer.scrollTo({
-        top: (activeAlbum + 1) * window.innerHeight,
+        top: (curVisual + 1) * window.innerHeight,
         behavior: 'smooth'
       });
     }
   }
   if (e.code === 'ArrowUp') {
     e.preventDefault();
-    if (activeAlbum > 0) {
+    const curVisual = Array.from(sections).findIndex(s => parseInt(s.dataset.album, 10) === activeAlbum);
+    if (curVisual > 0) {
       scrollContainer.scrollTo({
-        top: (activeAlbum - 1) * window.innerHeight,
+        top: (curVisual - 1) * window.innerHeight,
         behavior: 'smooth'
       });
     }
